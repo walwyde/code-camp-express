@@ -7,7 +7,8 @@ const dotenv = require("dotenv").config();
 app.use("/public", express.static(__dirname + "/public"));
 
 app.get("/json", (req, res) => {
-  res.json({ message: process.env.MESSAGE_STYLE = "uppercase"? "HELLO JSON" : "Hello json" });
+  const style = process.env.MESSAGE_STYLE;
+  res.json({ message: style = "uppercase"? "HELLO JSON" : "Hello json" });
 });
 
 app.get("/", (req, res) => {
