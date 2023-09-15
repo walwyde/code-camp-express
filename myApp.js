@@ -11,12 +11,20 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/now", (req, res, next) => {
-  req.time = new Date().toString();
-  next();
-}, (req, res) => {
-  res.json({ time: req.time });
-})
+app.get("/:word/echo", (req, res) => {
+  res.json({ echo: req.params.word });
+});
+
+app.get(
+  "/now",
+  (req, res, next) => {
+    req.time = new Date().toString();
+    next();
+  },
+  (req, res) => {
+    res.json({ time: req.time });
+  }
+);
 
 app.get("/json", (req, res) => {
   try {
